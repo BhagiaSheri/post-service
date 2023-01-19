@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>edu.miu.waa</groupId>
 	<artifactId>post-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>2023.03.01</version>
 	<name>post-service</name>
 	<description>Post Service for WAA Project</description>
 	<properties>
