@@ -27,6 +27,12 @@ public class PostController {
         this.postService = postService;
     }
 
+    @ResponseStatus(CREATED)
+    @PostMapping
+    public void createPost(@RequestBody PostCreateDto requestDto) {
+        postService.createPost(requestDto);
+    }
+
     @GetMapping
     public List<PostDetailsDto> getAllPostsDetails() {
         return postService.findAllPosts();
@@ -35,12 +41,6 @@ public class PostController {
     @GetMapping("/{id}")
     public PostDetailsDto getPostById(@PathVariable long id) {
         return postService.findPostDetailsById(id);
-    }
-
-    @ResponseStatus(CREATED)
-    @PostMapping
-    public void createPost(@RequestBody PostCreateDto requestDto) {
-        postService.createPost(requestDto);
     }
 
 }

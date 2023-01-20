@@ -4,13 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PostCreateDto {
+public class UserCreateDto {
     long id;
-    String title;
-    String content;
-    String author;
-    long userId;
+    String name;
 }
