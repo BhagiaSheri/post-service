@@ -8,8 +8,8 @@ import edu.miu.waa.postservice.domain.entity.Comment;
 import edu.miu.waa.postservice.domain.entity.Post;
 import edu.miu.waa.postservice.domain.entity.User;
 import edu.miu.waa.postservice.mapper.Mapper;
-import edu.miu.waa.postservice.repo.PostRepository;
-import edu.miu.waa.postservice.repo.UserRepository;
+import edu.miu.waa.postservice.repository.PostRepository;
+import edu.miu.waa.postservice.repository.UserRepository;
 import edu.miu.waa.postservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static edu.miu.waa.postservice.mapper.Mapper.convertCommentToCommentDetailsDto;
 import static edu.miu.waa.postservice.mapper.Mapper.convertPostListToPostDetailsDtoList;
 import static edu.miu.waa.postservice.mapper.Mapper.convertUserListToUserDetailsDtoList;
 import static java.util.Collections.emptyList;

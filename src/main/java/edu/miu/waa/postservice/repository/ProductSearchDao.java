@@ -1,4 +1,4 @@
-package edu.miu.waa.postservice.repo;
+package edu.miu.waa.postservice.repository;
 
 import edu.miu.waa.postservice.domain.dto.request.CriteriaRequestDto;
 import edu.miu.waa.postservice.domain.entity.Post;

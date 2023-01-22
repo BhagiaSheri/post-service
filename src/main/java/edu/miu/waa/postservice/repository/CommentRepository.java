@@ -1,4 +1,4 @@
-package edu.miu.waa.postservice.repo;
+package edu.miu.waa.postservice.repository;
 
 import edu.miu.waa.postservice.domain.entity.Comment;
 import org.springframework.data.repository.CrudRepository;
