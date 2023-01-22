@@ -11,6 +11,7 @@ import edu.miu.waa.postservice.mapper.Mapper;
 import edu.miu.waa.postservice.repository.PostRepository;
 import edu.miu.waa.postservice.repository.UserRepository;
 import edu.miu.waa.postservice.service.UserService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,7 @@ import static edu.miu.waa.postservice.mapper.Mapper.convertPostListToPostDetails
 import static edu.miu.waa.postservice.mapper.Mapper.convertUserListToUserDetailsDtoList;
 import static java.util.Collections.emptyList;
 
+@Transactional
 @Service
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;

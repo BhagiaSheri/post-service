@@ -10,6 +10,7 @@ import edu.miu.waa.postservice.repository.PostRepository;
 import edu.miu.waa.postservice.repository.ProductSearchDao;
 import edu.miu.waa.postservice.repository.UserRepository;
 import edu.miu.waa.postservice.service.PostService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,7 @@ import java.util.Optional;
 import static edu.miu.waa.postservice.mapper.Mapper.convertPostListToPostDetailsDtoList;
 
 @Service
+@Transactional
 public class PostServiceImpl implements PostService {
     private final PostRepository postRepository;
     private final UserRepository userRepository;

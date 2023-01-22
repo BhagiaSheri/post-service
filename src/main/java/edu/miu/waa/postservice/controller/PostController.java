@@ -20,7 +20,6 @@ import static org.springframework.http.HttpStatus.CREATED;
 @RestController
 @RequestMapping("/api/v1/posts")
 public class PostController {
-
     private final PostService postService;
 
     @Autowired
@@ -45,7 +44,7 @@ public class PostController {
     }
 
     @GetMapping("/filter")
-    public List<PostDetailsDto> getPostsByCriteria(@RequestParam(required = false) String title){
+    public List<PostDetailsDto> getPostsByCriteria(@RequestParam(required = false) String title) {
         return postService.findAllPostsByCriteria(title);
     }
 

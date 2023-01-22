@@ -7,6 +7,7 @@ import edu.miu.waa.postservice.domain.entity.Post;
 import edu.miu.waa.postservice.repository.CommentRepository;
 import edu.miu.waa.postservice.repository.PostRepository;
 import edu.miu.waa.postservice.service.CommentService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ import java.util.Optional;
 import static edu.miu.waa.postservice.mapper.Mapper.convertCommentListToCommentDetailsDtoList;
 
 @Service
+@Transactional
 public class CommentServiceImpl implements CommentService {
     private final CommentRepository commentRepository;
     private final PostRepository postRepository;

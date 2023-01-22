@@ -1,5 +1,6 @@
 package edu.miu.waa.postservice.controller;
 
+import edu.miu.waa.postservice.aspect.annotation.ExecutionTime;
 import edu.miu.waa.postservice.domain.dto.request.UserCreateDto;
 import edu.miu.waa.postservice.domain.dto.response.CommentDetailsDto;
 import edu.miu.waa.postservice.domain.dto.response.PostDetailsDto;
@@ -24,7 +25,6 @@ import static org.springframework.http.HttpStatus.OK;
 @RestController
 @RequestMapping("/api/v1/users")
 public class UserController {
-
     private final UserService userService;
 
     @Autowired
@@ -43,6 +43,7 @@ public class UserController {
         return userService.findAllUsers();
     }
 
+    @ExecutionTime
     @GetMapping("/{id}")
     public UserDetailsDto getUserById(@PathVariable long id) {
         return userService.findUserDetailsById(id);
@@ -69,7 +70,7 @@ public class UserController {
             @PathVariable long id,
             @PathVariable long postId,
             @PathVariable long commentId
-    ){
+    ) {
         return userService.findUserPostComment(id, postId, commentId);
     }
 
