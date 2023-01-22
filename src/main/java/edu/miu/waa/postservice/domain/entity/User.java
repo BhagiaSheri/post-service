@@ -1,6 +1,7 @@
 package edu.miu.waa.postservice.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,7 +27,7 @@ public class User {
 
     private String name;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     @JsonManagedReference
     private List<Post> posts;

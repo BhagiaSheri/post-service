@@ -1,4 +1,4 @@
-package edu.miu.waa.postservice.domain.dto;
+package edu.miu.waa.postservice.domain.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,7 +9,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserCreateDto {
-    long id;
+public class UserDetailsDto {
+    long userId;
     String name;
 }

@@ -6,10 +6,9 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
-public interface PostRepo extends CrudRepository<Post, Long> {
+public interface PostRepository extends CrudRepository<Post, Long> {
     List<Post> findPostByUser(User user);
 
 }
