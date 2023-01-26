@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 @Component
 public class ExecutionTimeAspect {
     @Pointcut("@annotation(edu.miu.waa.postservice.aspect.annotation.ExecutionTime)")
-    public void executionTimePointcut() {
+    public void matchExecutionTimeAnnotation() {
     }
 
-    @Around("executionTimePointcut()")
+    @Around("matchExecutionTimeAnnotation()")
     public Object calculateExecutionTime(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         long start = System.nanoTime();
         var result = proceedingJoinPoint.proceed();

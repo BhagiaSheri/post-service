@@ -21,6 +21,7 @@ import java.util.Optional;
 
 import static edu.miu.waa.postservice.mapper.Mapper.convertPostListToPostDetailsDtoList;
 import static edu.miu.waa.postservice.mapper.Mapper.convertUserListToUserDetailsDtoList;
+import static edu.miu.waa.postservice.mapper.Mapper.convertUserToUserDetailsDto;
 import static java.util.Collections.emptyList;
 
 @Transactional
@@ -51,8 +52,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetailsDto findUserDetailsById(long userId) {
-        Optional<User> user = userRepository.findById(userId);
-        return user.map(Mapper::convertUserToUserDetailsDto).orElse(new UserDetailsDto());
+        User user = userRepository.findById(userId).orElseThrow();
+        return convertUserToUserDetailsDto(user);
     }
 
     @Override

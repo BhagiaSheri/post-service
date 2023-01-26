@@ -23,10 +23,10 @@ public class LoggerAspect {
     }
 
     @Pointcut("within(edu.miu.waa.postservice.controller..*)")
-    public void loggerPointcut() {
+    public void matchAllMethodsInController() {
     }
 
-    @Before("loggerPointcut()")
+    @Before("matchAllMethodsInController()")
     public void logAllMethodCallsAdvice(JoinPoint joinPoint) {
         LoggerRequestDto requestDto = new LoggerRequestDto(0, Instant.now(), "fake-user", joinPoint.getSignature().getName());
         loggerService.persistLog(requestDto);
