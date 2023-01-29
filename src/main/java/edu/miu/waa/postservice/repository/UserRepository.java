@@ -12,6 +12,8 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
 
+    User findByUsername(String username);
+
     @Query(value = "SELECT u FROM User u WHERE size(u.posts) > :criteria")
     List<User> findAllPostGreaterThan(Integer criteria);
 

@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 import static java.util.Objects.requireNonNullElse;
-import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
 @RestController
@@ -32,7 +31,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @ResponseStatus(CREATED)
     @PostMapping
     public void createUser(@RequestBody UserCreateDto requestDto) {
         userService.createUsers(requestDto);

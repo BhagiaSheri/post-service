@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void createUsers(UserCreateDto userCreateDto) {
-        User user = new User(userCreateDto.getId(), userCreateDto.getName(), null);
+        User user = new User(userCreateDto.getId(), userCreateDto.getName(), userCreateDto.getUsername(), userCreateDto.getPassword(), null, userCreateDto.getRoles());
         userRepository.save(user);
     }
 
