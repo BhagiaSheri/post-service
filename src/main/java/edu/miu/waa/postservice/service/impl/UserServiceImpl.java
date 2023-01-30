@@ -22,6 +22,7 @@ import java.util.Optional;
 import static edu.miu.waa.postservice.mapper.Mapper.convertPostListToPostDetailsDtoList;
 import static edu.miu.waa.postservice.mapper.Mapper.convertUserListToUserDetailsDtoList;
 import static edu.miu.waa.postservice.mapper.Mapper.convertUserToUserDetailsDto;
+import static edu.miu.waa.postservice.util.Util.getEncodedPassword;
 import static java.util.Collections.emptyList;
 
 @Transactional
@@ -38,8 +39,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void createUsers(UserCreateDto userCreateDto) {
-        User user = new User(userCreateDto.getId(), userCreateDto.getName(), userCreateDto.getUsername(), userCreateDto.getPassword(), null, userCreateDto.getRoles());
-        userRepository.save(user);
+        Optional<User> user = userRepository.findByUsername(userCreateDto.getUsername());
+        if (user.isEmpty()) {
+            User newUser = new User(
+                    userCreateDto.getId(),
+                    userCreateDto.getName(),
+                    userCreateDto.getUsername(),
+                    getEncodedPassword(userCreateDto.getPassword()),
+                    null,
+                    userCreateDto.getRoles()
+            );
+            userRepository.save(newUser);
+        } else {
+            throw new RuntimeException("Username already exists!");
+        }
     }
 
 
