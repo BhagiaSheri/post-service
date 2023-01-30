@@ -6,7 +6,7 @@ import edu.miu.waa.postservice.domain.dto.response.PostDetailsDto;
 import java.util.List;
 
 public interface PostService {
-    void createPost(PostCreateDto postCreateDto);
+    void createPost(long userId, PostCreateDto postCreateDto);
 
     List<PostDetailsDto> findAllPosts();
 

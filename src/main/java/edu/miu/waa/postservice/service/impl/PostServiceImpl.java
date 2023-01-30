@@ -36,19 +36,17 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public void createPost(PostCreateDto postCreateDto) {
-        Optional<User> user = userRepository.findById(postCreateDto.getUserId());
-        if (user.isPresent()) {
-            Post newPost = new Post(
-                    postCreateDto.getId(),
-                    postCreateDto.getTitle(),
-                    postCreateDto.getContent(),
-                    postCreateDto.getAuthor(),
-                    user.get(),
-                    null
-            );
-            postRepository.save(newPost);
-        }
+    public void createPost(long userId, PostCreateDto postCreateDto) {
+        User user = userRepository.findById(userId).orElseThrow();
+        Post newPost = new Post(
+                postCreateDto.getId(),
+                postCreateDto.getTitle(),
+                postCreateDto.getContent(),
+                postCreateDto.getAuthor(),
+                user,
+                null
+        );
+        postRepository.save(newPost);
     }
 
     @Override

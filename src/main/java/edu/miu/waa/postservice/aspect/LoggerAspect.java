@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 
+import static edu.miu.waa.postservice.util.Util.getPrincipalUserName;
+
 @Aspect
 @Component
 public class LoggerAspect {
@@ -22,7 +24,7 @@ public class LoggerAspect {
 
     @Before("edu.miu.waa.postservice.aspect.AdvicePointcuts.matchAllMethodsOfController()")
     public void logAllMethodCallsAdvice(JoinPoint joinPoint) {
-        LoggerRequestDto requestDto = new LoggerRequestDto(0, Instant.now(), "fake-user", joinPoint.getSignature().getName());
+        LoggerRequestDto requestDto = new LoggerRequestDto(0, Instant.now(), getPrincipalUserName(), joinPoint.getSignature().getName());
         loggerService.persistLog(requestDto);
     }
 }

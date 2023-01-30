@@ -4,6 +4,7 @@ import edu.miu.waa.postservice.domain.dto.request.PostCreateDto;
 import edu.miu.waa.postservice.domain.dto.response.PostDetailsDto;
 import edu.miu.waa.postservice.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
+import static edu.miu.waa.postservice.util.Util.getPrincipalId;
 
 @RestController
 @RequestMapping("/api/v1/posts")
@@ -25,8 +28,8 @@ public class PostController {
     }
 
     @PostMapping
-    public void createPost(@RequestBody PostCreateDto requestDto) {
-        postService.createPost(requestDto);
+    public void createPost(Authentication authentication, @RequestBody PostCreateDto requestDto) {
+        postService.createPost(getPrincipalId(authentication), requestDto);
     }
 
     @GetMapping

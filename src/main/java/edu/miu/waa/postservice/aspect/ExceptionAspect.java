@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 
 import java.time.Instant;
 
+import static edu.miu.waa.postservice.util.Util.getPrincipalUserName;
+
 @Aspect
 @Component
 public class ExceptionAspect {
@@ -22,7 +24,7 @@ public class ExceptionAspect {
 
     @AfterThrowing(value = "edu.miu.waa.postservice.aspect.AdvicePointcuts.matchAllMethodsOfController()", throwing = "ex")
     public void logExceptionAdvice(JoinPoint joinPoint, Throwable ex) {
-        ExceptionRequestDto requestDto = new ExceptionRequestDto(0, Instant.now(), "fake-user", joinPoint.getSignature().getName(), ex.getClass().getName());
+        ExceptionRequestDto requestDto = new ExceptionRequestDto(0, Instant.now(), getPrincipalUserName(), joinPoint.getSignature().getName(), ex.getClass().getName());
         exceptionService.persistException(requestDto);
     }
 }

@@ -12,12 +12,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class MyUserDetails implements UserDetails {
+
+    private final long userId;
     private final String username;
     @JsonIgnore
     private final String password;
     private final List<Role> roles;
 
     public MyUserDetails(User user) {
+        this.userId = user.getId();
         this.username = user.getUsername();
         this.password = user.getPassword();
         this.roles = user.getRoles();
@@ -28,6 +31,10 @@ public class MyUserDetails implements UserDetails {
         return roles.stream()
                 .map(role -> new SimpleGrantedAuthority(role.getRole()))
                 .collect(Collectors.toList());
+    }
+
+    public long getUserId() {
+        return userId;
     }
 
     @Override
