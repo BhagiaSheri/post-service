@@ -2,6 +2,7 @@ package edu.miu.waa.postservice.service.impl;
 
 import edu.miu.waa.postservice.domain.dto.request.CriteriaRequestDto;
 import edu.miu.waa.postservice.domain.dto.request.PostCreateDto;
+import edu.miu.waa.postservice.domain.dto.response.CommentDetailsDto;
 import edu.miu.waa.postservice.domain.dto.response.PostDetailsDto;
 import edu.miu.waa.postservice.domain.entity.Post;
 import edu.miu.waa.postservice.domain.entity.User;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import static edu.miu.waa.postservice.mapper.Mapper.convertCommentListToCommentDetailsDtoList;
 import static edu.miu.waa.postservice.mapper.Mapper.convertPostListToPostDetailsDtoList;
 
 @Service
@@ -25,7 +27,6 @@ import static edu.miu.waa.postservice.mapper.Mapper.convertPostListToPostDetails
 public class PostServiceImpl implements PostService {
     private final PostRepository postRepository;
     private final UserRepository userRepository;
-
     private final ProductSearchDao productSearchDao;
 
     @Autowired
@@ -39,7 +40,7 @@ public class PostServiceImpl implements PostService {
     public void createPost(long userId, PostCreateDto postCreateDto) {
         User user = userRepository.findById(userId).orElseThrow();
         Post newPost = new Post(
-                postCreateDto.getId(),
+                0,
                 postCreateDto.getTitle(),
                 postCreateDto.getContent(),
                 postCreateDto.getAuthor(),
@@ -66,6 +67,17 @@ public class PostServiceImpl implements PostService {
     public List<PostDetailsDto> findAllPostsByCriteria(String title) {
         List<Post> posts = productSearchDao.findAllByCriteria(new CriteriaRequestDto(title));
         return convertPostListToPostDetailsDtoList(posts);
+    }
+
+    @Override
+    public void deletePostById(long postId) {
+        postRepository.deleteById(postId);
+    }
+
+    @Override
+    public List<CommentDetailsDto> findCommentsByPostId(long postId) {
+        Post post = postRepository.findById(postId).orElseThrow();
+        return convertCommentListToCommentDetailsDtoList(post.getComments());
     }
 
 }

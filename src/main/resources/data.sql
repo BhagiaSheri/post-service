@@ -19,4 +19,12 @@ INSERT into posts (id, title, content, author, user_id)
 VALUES (202, 'Test Post # 2', 'Test Content # 2', 'Super Author', 101);
 
 INSERT into comments (id, name, post_id)
-VALUES (301, 'Post # 1 Comment', 201);
+VALUES (301, 'Best post ever', 201);
+INSERT into comments (id, name, post_id)
+VALUES (302, 'I loved the content', 201);
+INSERT into comments (id, name, post_id)
+VALUES (303, 'Best ever!!!', 201);
+INSERT into comments (id, name, post_id)
+VALUES (304, 'I loved the article', 202);
+INSERT into comments (id, name, post_id)
+VALUES (305, 'Super Duper great!!!', 202);
