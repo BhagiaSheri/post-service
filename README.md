@@ -4,7 +4,7 @@ Web Application Archietcture (WAA) course day to day progress in a form of post-
 
 ## Basic use-case and requirements of project can be found in below link:
 
-[WAA Labs / Requirements](https://github.com/facebook/create-react-app](https://github.com/BhagiaSheri/post-service/tree/main/src/main/java/edu/miu/waa/postservice/requirements).
+[WAA-Labs/Requirements](https://github.com/facebook/create-react-app](https://github.com/BhagiaSheri/post-service/tree/main/src/main/java/edu/miu/waa/postservice/requirements).
 
 ## Description:
 
